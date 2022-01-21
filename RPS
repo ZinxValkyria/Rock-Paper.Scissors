@@ -1,0 +1,58 @@
+const getUserChoice = userInput =>{
+  userInput = userInput.toLowerCase();
+  if(userInput =='rock' || userInput =='scissors' || userInput =='paper' || userInput =='bomb'){
+    return userInput;
+  }
+  else{
+    console.log('Please enter a valid choice');
+  }
+}
+/*console.log(getUserChoice('Paper'));
+console.log(getUserChoice('rock'));*/
+const getComputerChoice = () =>{
+ const randomNum = Math.floor(Math.random() * 3);
+ switch(randomNum){
+   case 0:
+   return 'rock';
+   case 1:
+   return 'scissors';
+   case 2:
+   return 'paper';
+ }
+
+
+}
+const determineWinner = (userChoice, computerChoice) =>{
+  if(userChoice == computerChoice){
+    return 'Game is a Tie!';
+  }
+  else if(userChoice =='rock' && computerChoice=='paper'){
+    return'You win!....Rock trumps paper';
+  }
+   else if(userChoice =='paper' && computerChoice=='rock'){
+    return'You Lose!....Rock trumps paper';
+  }
+   else if(userChoice =='scissors' && computerChoice=='paper'){
+    return'You Win!....Scissors trumps paper';
+   }
+   else if(userChoice =='paper' && computerChoice=='scissors'){
+    return'You Lose!....Scissors trumps paper';
+   }
+   else if(userChoice =='scissors' && computerChoice=='rock'){
+    return'You Lose!....Rock trumps scissors';
+   } 
+   else if(userChoice =='bomb')
+   {
+     return'Annihalation!!! YOU WIN!';
+   }
+}
+const playGame =() =>{
+  const userChoice = getUserChoice('bomb');
+  const computerChoice = getComputerChoice();
+  console.log(userChoice+' VS ' +computerChoice);
+  console.log(determineWinner(userChoice, computerChoice));
+}
+playGame();
+
+
+
